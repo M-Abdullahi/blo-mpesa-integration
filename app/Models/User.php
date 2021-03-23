@@ -20,7 +20,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'telephone',
     ];
 
     /**
@@ -41,4 +40,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    protected static function booted()
+    {
+        static::created(function (self $user) {
+            $user->customer()->create([
+                'name'  => $user->name,
+                'email' => $user->email,
+            ]);
+        });
+    }
+
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+
+
 }
