@@ -30,4 +30,17 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'mpesa' => [
+        // live or sandbox
+        'environment'     => env('MPESA_ENV'),
+
+        // Our mpesa API credentials
+        'consumer_key'    => env('MPESA_CONSUMER_KEY'),
+        'consumer_secret' => env('MPESA_CONSUMER_SECRET'),
+
+        'shortcode'       => env('MPESA_SHORT_CODE'),
+        'passkey'         => env('MPESA_PASS_KEY'),
+    ]
+
+
 ];
